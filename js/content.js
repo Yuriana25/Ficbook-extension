@@ -1,11 +1,6 @@
 // content.js
 // Вызываем очистку кэша при загрузке скрипта и обновляем стили
-checkExtensionVersionAndClearCache(() => {
-	// Получаем все настройки и кэшированные стили для каждого модуля
-	chrome.storage.local.get(storageKeys, function (data) {
-		updateAllModule(data);
-	});
-});
+checkAndClearCacheIfNeeded();
 
 // Глобальный массив ключей в кэше, со стилями и их состоянием
 const storageKeys = [
@@ -73,7 +68,7 @@ function removeStyles() {
 	let existingStyle = document.getElementById('combined-styles');
 	if (existingStyle) {
 		existingStyle.remove();
-		console.log('🗑️ Объединённые стили удалены');
+		console.log('🗑 Объединённые стили удалены');
 	}
 }
 
@@ -100,17 +95,13 @@ function updateAllModule(data) {
 	}
 }
 
-// Функция для проверки версии расширения и очистки кэша при обновлении
-function checkExtensionVersionAndClearCache(callback) {
-	const currentVersion = chrome.runtime.getManifest().version;
-
-	chrome.storage.local.get('extensionVersion', (data) => {
-		const savedVersion = data.extensionVersion;
-
-		// Если версия изменилась или её нет
-		if (savedVersion !== currentVersion) {
-			console.log('🔄 Обнаружена новая версия:', currentVersion);
-
+// Функция для проверки и очистки кэша раз в сутки
+function checkAndClearCacheIfNeeded() {
+	const oneDay = 24 * 60 * 60 * 1000; // один день в мс
+	chrome.storage.local.get('cacheTimestamp', (data) => {
+		const now = Date.now();
+		const lastTimestamp = data.cacheTimestamp || 0;
+		if (now - lastTimestamp > oneDay) {
 			chrome.storage.local.remove([
 				'cachedStyles_bookCover',
 				'cachedStyles_searchFullScreen',
@@ -123,19 +114,20 @@ function checkExtensionVersionAndClearCache(callback) {
 				'cachedStyles_removeReaded',
 				'cachedStyles_addUnderlineFicTitles'
 			], () => {
-				chrome.storage.local.set({
-					extensionVersion: currentVersion
-				}, () => {
-					console.log('✅ Кэш очищен из-за обновления версии');
-					callback && callback();
+				chrome.storage.local.set({ cacheTimestamp: now }, () => {
+					updateAllModule(data);
+					console.log('Кэш очищен, метка времени обновлена');
 				});
 			});
-
-		} else {
-			callback && callback();
 		}
 	});
 }
+
+// Получаем все настройки и кэшированные стили для каждого модуля
+chrome.storage.local.get(storageKeys, function (data) {
+	updateAllModule(data);
+});
+
 
 // Слушаем изменения настроек (например, при переключении чекбоксов)
 chrome.storage.onChanged.addListener((changes, areaName) => {
