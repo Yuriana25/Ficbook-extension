@@ -28,11 +28,6 @@ const MODULES = {
 		cache: 'cachedStyles_removeBtn',
 		update: updateRemoveBtnModule
 	},
-	discountSmaller: {
-		toggle: 'discountSmaller',
-		cache: 'cachedStyles_discountSmaller',
-		update: updateDiscountSmallerModule
-	},
 	sidebarNavStyle: {
 		toggle: 'sidebarNavStyle',
 		cache: 'cachedStyles_sidebarNavStyle',
@@ -434,6 +429,41 @@ function generateBookCoverCss(images) {
 				display: none;
 			}
 		}
+
+		/* Сделать меньше кнопку со скидкой */
+    .discount-sticky-container {
+    right: -55px;
+		}
+		.discount-sticky-container .discount-sticky {
+				height: 125px;
+		}
+		.discount-sticky-container .discount-sticky .discount-label {
+    transform: translate(-35%) rotate(90.1deg);
+		}
+		@media (max-width: 1309px) {
+			.discount-sticky-container .discount-sticky {
+				height: 105px;
+				padding: 15px 0;
+			}
+		}
+		@media (max-width: 991px) {
+			.discount-sticky-container .discount-sticky .discount-label {
+				transform: translate(-38%) rotate(90.1deg);
+			}
+		}
+		@media (max-width: 991px) {
+			.discount-sticky-container {
+				width: 20px;
+				right: -35px;
+			}
+		}
+		@media (max-width: 1309px) {
+			.discount-sticky-container {
+				width: 25px;
+				font-size: .75em;
+				right: -40px;
+			}
+		}
   `;
 }
 
@@ -542,69 +572,6 @@ function generateRemoveBtnCss() {
     a[href*="/thanks-author-page"] {
       display: none !important;
     }
-  `;
-}
-
-
-// ------------- МОДУЛЬ "Discount Smaller" -------------
-
-function updateDiscountSmallerModule(data) {
-	if (data.discountSmaller) {
-		if (data.cachedStyles_discountSmaller) {
-			window.moduleStyles.discountSmaller = data.cachedStyles_discountSmaller;
-		} else {
-			preloadAndCacheDiscountSmallerStyle();
-		}
-	} else {
-		window.moduleStyles.discountSmaller = '';
-	}
-}
-
-function preloadAndCacheDiscountSmallerStyle() {
-	const generatedCss = generateDiscountSmallerCss();
-	chrome.storage.local.set({ cachedStyles_discountSmaller: generatedCss }, () => {
-		window.moduleStyles.discountSmaller = generatedCss;
-		applyCombinedStylesFromMemory();
-		console.log("✅ cachedStyles_discountSmaller сохранён и применён");
-	});
-}
-
-function generateDiscountSmallerCss() {
-	return `
-    /* Сделать меньше кнопку со скидкой */
-    .discount-sticky-container {
-    right: -55px;
-		}
-		.discount-sticky-container .discount-sticky {
-				height: 125px;
-		}
-		.discount-sticky-container .discount-sticky .discount-label {
-    transform: translate(-35%) rotate(90.1deg);
-		}
-		@media (max-width: 1309px) {
-			.discount-sticky-container .discount-sticky {
-				height: 105px;
-				padding: 15px 0;
-			}
-		}
-		@media (max-width: 991px) {
-			.discount-sticky-container .discount-sticky .discount-label {
-				transform: translate(-38%) rotate(90.1deg);
-			}
-		}
-		@media (max-width: 991px) {
-			.discount-sticky-container {
-				width: 20px;
-				right: -35px;
-			}
-		}
-		@media (max-width: 1309px) {
-			.discount-sticky-container {
-				width: 25px;
-				font-size: .75em;
-				right: -40px;
-			}
-		}
   `;
 }
 

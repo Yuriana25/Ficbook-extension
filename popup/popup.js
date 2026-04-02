@@ -5,7 +5,6 @@ const keys = [
 	'searchFullScreenStyle',
 	'commentsStyle',
 	'removeBtnEndOfFic',
-	'discountSmaller',
 	'sidebarNavStyle',
 	'headersPageStyle',
 	'removePromo',
