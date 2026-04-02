@@ -57,6 +57,11 @@ const MODULES = {
 		toggle: 'addUnderlineFicTitles',
 		cache: 'cachedStyles_addUnderlineFicTitles',
 		update: updateAddUnderlineFicTitlesModule
+	},
+	changeColorFont: {
+		toggle: 'changeColorFont',
+		cache: 'cachedStyles_changeColorFont',
+		update: updateChangeColorFontModule
 	}
 };
 
@@ -83,7 +88,7 @@ function applyCombinedStylesFromMemory() {
 	let combinedCss = combineModuleStyles();
 	let styleElement = document.getElementById('combined-styles') || createStyleElement();
 	styleElement.textContent = combinedCss;
-	console.log('✅ Объединённые стили применены из памяти:', combinedCss);
+	console.log('✅ Объединённые стили применены из памяти:');
 }
 
 // Создаём элемент <style> для объединённых стилей
@@ -769,3 +774,44 @@ function generateaddUnderlineFicTitlesCss() {
 		}
   `;
 }
+
+// ------------- МОДУЛЬ "Change Color Font" ------------- ChangeColorFont changeColorFont
+
+function updateChangeColorFontModule(data) {
+	if (data.changeColorFont) {
+		if (data.cachedStyles_changeColorFont) {
+			window.moduleStyles.changeColorFont = data.cachedStyles_changeColorFont;
+		} else {
+			preloadAndCacheChangeColorFontStyle();
+		}
+	} else {
+		window.moduleStyles.changeColorFont = '';
+	}
+}
+
+function preloadAndCacheChangeColorFontStyle() {
+	const generatedCss = generateChangeColorFontCss();
+	chrome.storage.local.set({ cachedStyles_changeColorFont: generatedCss }, () => {
+		window.moduleStyles.changeColorFont = generatedCss;
+		applyCombinedStylesFromMemory();
+		console.log("✅ cachedStyles_changeColorFont сохранён и применён");
+	});
+}
+
+function generateChangeColorFontCss() {
+	return `
+		/*Цвета текста на сайте*/
+		/* Темный основной текст */
+		.book-container .book-inner {
+			color: #000 !important;
+		}
+
+		/*Коричневый цвет кнопок/текста - темнее #4f2d01 var(--primary-8)*/
+		a,
+		.as-link,
+		.search-form .link-button {
+			color: var(--primary-8);
+		}
+  `;
+}
+

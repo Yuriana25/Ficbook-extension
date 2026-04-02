@@ -1,3 +1,17 @@
+ /*Цвета текста на сайте*/
+ /* Темный основной текст */
+ .book-container .book-inner {
+ 	color: #000 !important;
+ }
+
+ /*Коричневый цвет кнопок/текста - темнее #4f2d01 var(--primary-8)*/
+ a,
+ .as-link,
+ .search-form .link-button {
+ 	color: var(--primary-8);
+ }
+
+
 /* Коментарии */
 .comment-container * {
 	font-size: 15px !important;

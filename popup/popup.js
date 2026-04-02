@@ -11,6 +11,7 @@ const keys = [
 	'removePromo',
 	'removeReaded',
 	'addUnderlineFicTitles',
+	'changeColorFont',
 	'switch'
 ];
 
