@@ -7,49 +7,75 @@ checkExtensionVersionAndClearCache(() => {
 	});
 });
 
+const MODULES = {
+	bookCover: {
+		toggle: 'bookCoverStyle',
+		cache: 'cachedStyles_bookCover',
+		update: updateBookCoverModule
+	},
+	searchFullScreen: {
+		toggle: 'searchFullScreenStyle',
+		cache: 'cachedStyles_searchFullScreen',
+		update: updateSearchFullScreenModule
+	},
+	comments: {
+		toggle: 'commentsStyle',
+		cache: 'cachedStyles_comments',
+		update: updateCommentsModule
+	},
+	removeBtn: {
+		toggle: 'removeBtnEndOfFic',
+		cache: 'cachedStyles_removeBtn',
+		update: updateRemoveBtnModule
+	},
+	discountSmaller: {
+		toggle: 'discountSmaller',
+		cache: 'cachedStyles_discountSmaller',
+		update: updateDiscountSmallerModule
+	},
+	sidebarNavStyle: {
+		toggle: 'sidebarNavStyle',
+		cache: 'cachedStyles_sidebarNavStyle',
+		update: updateSidebarNavModule
+	},
+	headersPageStyle: {
+		toggle: 'headersPageStyle',
+		cache: 'cachedStyles_headersPageStyle',
+		update: updateHeadersPageModule
+	},
+	removePromo: {
+		toggle: 'removePromo',
+		cache: 'cachedStyles_removePromo',
+		update: updateRemovePromoModule
+	},
+	removeReaded: {
+		toggle: 'removeReaded',
+		cache: 'cachedStyles_removeReaded',
+		update: updateRemoveReadedModule
+	},
+	addUnderlineFicTitles: {
+		toggle: 'addUnderlineFicTitles',
+		cache: 'cachedStyles_addUnderlineFicTitles',
+		update: updateAddUnderlineFicTitlesModule
+	}
+};
+
 // Глобальный массив ключей в кэше, со стилями и их состоянием
 const storageKeys = [
-	'bookCoverStyle', 'cachedStyles_bookCover',
-	'searchFullScreenStyle', 'cachedStyles_searchFullScreen',
-	'commentsStyle', 'cachedStyles_comments',
-	'removeBtnEndOfFic', 'cachedStyles_removeBtn',
-	'discountSmaller', 'cachedStyles_discountSmaller',
-	'sidebarNavStyle', 'cachedStyles_sidebarNavStyle',
-	'headersPageStyle', 'cachedStyles_headersPageStyle',
-	'removePromo', 'cachedStyles_removePromo',
-	'removeReaded', 'cachedStyles_removeReaded',
-	'addUnderlineFicTitles', 'cachedStyles_addUnderlineFicTitles',
+	...Object.values(MODULES).flatMap(m => [m.toggle, m.cache]),
 	'switch'
 ];
 
 // Глобальный объект для хранения текущих модульных стилей
-window.moduleStyles = {
-	bookCover: '',           // для cachedStyles_bookCover
-	searchFullScreen: '',    // для cachedStyles_searchFullScreen
-	comments: '',            // для cachedStyles_comments
-	removeBtn: '',           // для cachedStyles_removeBtn
-	discountSmaller: '',     // для cachedStyles_discountSmaller
-	sidebarNavStyle: '',     // для cachedStyles_sidebarNavStyle
-	headersPageStyle: '',    // для cachedStyles_headersPageStyle
-	removePromo: '',         // для cachedStyles_removePromo
-	removeReaded: '',        // для cachedStyles_removeReaded
-	addUnderlineFicTitles: ''// для cachedStyles_addUnderlineFicTitles
-};
+window.moduleStyles = Object.fromEntries(
+	Object.keys(MODULES).map(key => [key, ''])
+);
 
 // Функция объединения модульных стилей
 function combineModuleStyles() {
-	return [
-		window.moduleStyles.bookCover,
-		window.moduleStyles.searchFullScreen,
-		window.moduleStyles.comments,
-		window.moduleStyles.removeBtn,
-		window.moduleStyles.discountSmaller,
-		window.moduleStyles.sidebarNavStyle,
-		window.moduleStyles.headersPageStyle,
-		window.moduleStyles.removePromo,
-		window.moduleStyles.removeReaded,
-		window.moduleStyles.addUnderlineFicTitles
-	].filter(Boolean).join("\n");
+	return Object.values(window.moduleStyles)
+		.filter(Boolean)
+		.join("\n");
 }
 
 // Функция, которая вставляет объединённые стили в один <style> элемент
@@ -79,16 +105,9 @@ function removeStyles() {
 
 // Функция для вызова всех модулей и комбинируем css стили
 function updateAllModule(data) {
-	updateBookCoverModule(data);
-	updateSearchFullScreenModule(data);
-	updateCommentsModule(data);
-	updateRemoveBtnModule(data);
-	updateDiscountSmallerModule(data);
-	updateSidebarNavModule(data);
-	updateHeadersPageModule(data);
-	updateRemovePromoModule(data);
-	updateRemoveReadedModule(data);
-	updateAddUnderlineFicTitlesModule(data);
+	Object.entries(MODULES).forEach(([key, module]) => {
+		module.update(data);
+	});
 
 	let combinedCss = combineModuleStyles();
 	if (combinedCss && data.switch) {
@@ -96,7 +115,6 @@ function updateAllModule(data) {
 	} else {
 		removeStyles();
 		console.log('Расширение отключено (switch выключён)');
-		return;
 	}
 }
 
@@ -111,22 +129,13 @@ function checkExtensionVersionAndClearCache(callback) {
 		if (savedVersion !== currentVersion) {
 			console.log('🔄 Обнаружена новая версия:', currentVersion);
 
-			chrome.storage.local.remove([
-				'cachedStyles_bookCover',
-				'cachedStyles_searchFullScreen',
-				'cachedStyles_comments',
-				'cachedStyles_removeBtn',
-				'cachedStyles_discountSmaller',
-				'cachedStyles_sidebarNavStyle',
-				'cachedStyles_headersPageStyle',
-				'cachedStyles_removePromo',
-				'cachedStyles_removeReaded',
-				'cachedStyles_addUnderlineFicTitles'
-			], () => {
+			const cacheKeys = Object.values(MODULES).map(m => m.cache);
+
+			chrome.storage.local.remove(cacheKeys, () => {
 				chrome.storage.local.set({
 					extensionVersion: currentVersion
 				}, () => {
-					console.log('✅ Кэш очищен из-за обновления версии');
+					console.log('✅ Кэш очищен');
 					callback && callback();
 				});
 			});
