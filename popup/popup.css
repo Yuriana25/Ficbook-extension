@@ -93,3 +93,33 @@ label {
 	margin-right: 4px;
 	block-size: 12px
 }
+
+.tabs {
+	display: flex;
+	margin-bottom: 8px;
+	text-align: center;
+	margin-bottom: 8px;
+	border-bottom: 1px solid #e9dabb;
+}
+
+.tab-btn {
+	flex: 1;
+	background: none;
+	border: none;
+	padding: 6px;
+	cursor: pointer;
+	font-size: 13px;
+}
+
+.tab-btn.active {
+	border-bottom: 2px solid #c69e6b;
+	font-weight: bold;
+}
+
+.tab-content {
+	display: none;
+}
+
+.tab-content.active {
+	display: block;
+}

@@ -25,79 +25,89 @@
 			</div>
 		</div>
 
+		<div class="tabs">
+			<div class="tab-btn active" data-tab="old-style">Старый дизайн</div>
+			<div class="tab-btn" data-tab="new-features">Новые функции</div>
+			<!-- Добавьте другие вкладки по мере необходимости -->
+		</div>
 
-		<div class="container-custom-style">
-			<div class="container-checkbox">
-				<label for="bookCoverStyle">
-					<input type="checkbox" id="bookCoverStyle" name="bookCoverStyle" />
-					Добавить книжную обложку (old)
-				</label><br />
-			</div>
+		<div class="tab-content active" id="old-style">
+			<div class="container-custom-style">
+				<div class="container-checkbox">
+					<label for="bookCoverStyle">
+						<input type="checkbox" id="bookCoverStyle" name="bookCoverStyle" />
+						Добавить книжную обложку (old)
+					</label><br />
+				</div>
 
-			<div class="container-checkbox">
-				<label for="searchFullScreenStyle">
-					<input type="checkbox" id="searchFullScreenStyle" name="searchFullScreenStyle" />
-					Расширеный поиск на всю страницу (old)
-				</label><br />
-			</div>
+				<div class="container-checkbox">
+					<label for="searchFullScreenStyle">
+						<input type="checkbox" id="searchFullScreenStyle" name="searchFullScreenStyle" />
+						Расширеный поиск на всю страницу (old)
+					</label><br />
+				</div>
 
-			<div class="container-checkbox">
-				<label for="removeBtnEndOfFic">
-					<input type="checkbox" id="removeBtnEndOfFic" name="removeBtnEndOfFic" />
-					Убрать кнопку "Вперед" в конце работы (old)
-				</label><br />
-			</div>
+				<div class="container-checkbox">
+					<label for="removeBtnEndOfFic">
+						<input type="checkbox" id="removeBtnEndOfFic" name="removeBtnEndOfFic" />
+						Убрать кнопку "Вперед" в конце работы (old)
+					</label><br />
+				</div>
 
-			<div class="container-checkbox">
-				<label for="sidebarNavStyle">
-					<input type="checkbox" id="sidebarNavStyle" name="sidebarNavStyle" />
-					Профиль: больше шрифт и иконки в боковом меню, колокольчик (old)
-				</label><br />
-			</div>
+				<div class="container-checkbox">
+					<label for="sidebarNavStyle">
+						<input type="checkbox" id="sidebarNavStyle" name="sidebarNavStyle" />
+						Профиль: больше шрифт и иконки в боковом меню, колокольчик (old)
+					</label><br />
+				</div>
 
-			<div class="container-checkbox">
-				<label for="headersPageStyle">
-					<input type="checkbox" id="headersPageStyle" name="headersPageStyle" />
-					Заголовки страниц больше (old)
-				</label><br />
-			</div>
+				<div class="container-checkbox">
+					<label for="headersPageStyle">
+						<input type="checkbox" id="headersPageStyle" name="headersPageStyle" />
+						Заголовки страниц больше (old)
+					</label><br />
+				</div>
 
-			<div class="container-checkbox">
-				<label for="removePromo">
-					<input type="checkbox" id="removePromo" name="removePromo" />
-					Без промо в списках (old)
-				</label><br />
-			</div>
+				<div class="container-checkbox">
+					<label for="removePromo">
+						<input type="checkbox" id="removePromo" name="removePromo" />
+						Без промо в списках (old)
+					</label><br />
+				</div>
 
-			<div class="container-checkbox">
-				<label for="addUnderlineFicTitles">
-					<input type="checkbox" id="addUnderlineFicTitles" name="addUnderlineFicTitles" />
-					Добавить подчеркивание для названий фанфиков (ссылки) (old)
-				</label><br />
-			</div>
+				<div class="container-checkbox">
+					<label for="addUnderlineFicTitles">
+						<input type="checkbox" id="addUnderlineFicTitles" name="addUnderlineFicTitles" />
+						Добавить подчеркивание для названий фанфиков (ссылки) (old)
+					</label><br />
+				</div>
 
-			<div class="container-checkbox">
-				<label for="changeColorFont">
-					<input type="checkbox" id="changeColorFont" name="changeColorFont" />
-					Изменить цвет текста на более темный (old)
-				</label><br />
-			</div>
-
-			<div class="container-checkbox">
-				<label for="commentsStyle">
-					<input type="checkbox" id="commentsStyle" name="commentsStyle" />
-					Стили для коментариев (под меня)
-				</label><br />
-			</div>
-
-			<div class="container-checkbox">
-				<label for="removeReaded">
-					<input type="checkbox" id="removeReaded" name="removeReaded" />
-					Скрыть прочитанные фанфики с популярного
-				</label><br />
+				<div class="container-checkbox">
+					<label for="changeColorFont">
+						<input type="checkbox" id="changeColorFont" name="changeColorFont" />
+						Изменить цвет текста на более темный (old)
+					</label><br />
+				</div>
 			</div>
 		</div>
 
+		<div class="tab-content" id="new-features">
+			<div class="container-custom-style">
+				<div class="container-checkbox">
+					<label for="commentsStyle">
+						<input type="checkbox" id="commentsStyle" name="commentsStyle" />
+						Стили для коментариев (под меня)
+					</label><br />
+				</div>
+
+				<div class="container-checkbox">
+					<label for="removeReaded">
+						<input type="checkbox" id="removeReaded" name="removeReaded" />
+						Скрыть прочитанные фанфики с популярного
+					</label><br />
+				</div>
+			</div>
+		</div>
 
 		<div class="container-btn">
 			<button class="btn" type="button" id="checkAll">Выбрать всё</button>

@@ -14,8 +14,45 @@ const keys = [
 	'switch'
 ];
 
-
 document.addEventListener('DOMContentLoaded', function () {
+	// --- ВКЛАДКИ ---
+	const tabs = document.querySelectorAll('.tab-btn');
+	const contents = document.querySelectorAll('.tab-content');
+
+	// --- ФУНКЦИЯ АКТИВАЦИИ ---
+	function activateTab(tabId) {
+		// Сначала удаляем класс 'active' у всех кнопок и контента
+		tabs.forEach(b => b.classList.remove('active'));
+		contents.forEach(c => c.classList.remove('active'));
+
+		// Затем добавляем класс 'active' только для выбранной вкладки и её контента
+		const btn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+		const content = document.getElementById(tabId);
+
+		if (btn && content) {
+			btn.classList.add('active');
+			content.classList.add('active');
+		}
+	}
+
+	// --- ВКЛАДКИ ---
+	tabs.forEach(btn => {
+		btn.addEventListener('click', () => {
+			const tabId = btn.dataset.tab;
+
+			activateTab(tabId);
+
+			chrome.storage.local.set({ activeTab: tabId });
+		});
+	});
+
+	// ✅ ВОССТАНОВЛЕНИЕ вкладки
+	chrome.storage.local.get('activeTab', ({ activeTab }) => {
+		if (activeTab) {
+			activateTab(activeTab);
+		}
+	});
+
 	// Массив с ключами, соответствующими id чекбоксов
 	keys.forEach(key => {
 		const checkbox = document.getElementById(key);
