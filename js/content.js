@@ -146,6 +146,10 @@ function checkExtensionVersionAndClearCache(callback) {
 	});
 }
 
+chrome.storage.local.get(storageKeys, function (data) {
+	updateAllModule(data);
+});
+
 // Слушаем изменения настроек (например, при переключении чекбоксов)
 chrome.storage.onChanged.addListener((changes, areaName) => {
 	if (areaName === 'local') {
