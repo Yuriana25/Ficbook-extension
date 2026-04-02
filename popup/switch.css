@@ -1,0 +1,71 @@
+.gui-switch {
+	--track-size: calc(var(--thumb-size) * 2);
+	--track-padding: 2px;
+
+	--track-inactive: hsl(80 0% 80%);
+	--track-active: hsl(212, 100%, 50%);
+
+	--track-color-inactive: var(--track-inactive);
+	--track-color-active: var(--track-active);
+
+	--thumb-size: 7px;
+	--thumb: hsl(0 0% 100%);
+	--thumb-highlight: hsla(0, 0%, 0%, 0.13);
+
+	--thumb-color: var(--thumb);
+	--thumb-color-highlight: var(--thumb-highlight);
+}
+.gui-switch {
+	display: flex;
+	align-items: center;
+	/*gap: 2ch;*/
+	justify-content: end;
+	flex-direction: row-reverse;
+
+	user-select: none;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.gui-switch>input {
+	appearance: none;
+
+	border: none;
+	outline-offset: 5px;
+	box-sizing: content-box;
+	padding: var(--track-padding);
+	background: var(--track-color-inactive);
+	inline-size: var(--track-size);
+	block-size: var(--thumb-size);
+	border-radius: var(--track-size);
+
+	flex-shrink: 0;
+	display: grid;
+	align-items: center;
+	grid: [track] 1fr / [track] 1fr;
+
+	--thumb-position: 0%;
+}
+
+.gui-switch>input::before {
+	content: "";
+	grid-area: track;
+	inline-size: var(--thumb-size);
+	block-size: var(--thumb-size);
+
+	background: var(--thumb-color);
+	border-radius: 50%;
+
+	box-shadow: 0 0 0 var(--highlight-size) var(--thumb-color-highlight);
+
+	transform: translateX(var(--thumb-position));
+}
+
+.gui-switch>input:hover::before {
+	--highlight-size: 4px;
+}
+
+/* Позиционирование в конце трека: длина трека - 100% (ширина ползунка) */
+.gui-switch>input:checked {
+	--thumb-position: calc(var(--track-size) - 100%);
+	background: var(--track-color-active);
+}

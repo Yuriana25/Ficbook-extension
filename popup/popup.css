@@ -1,0 +1,95 @@
+body {
+	font-size: 14px;
+	font-family: Arial, sans-serif;
+	margin: 0;
+}
+
+h3 {
+	margin: 0;
+}
+
+.main {
+	width: 340px;
+	padding: 10px;
+	background-color: #f6ecda;
+	box-sizing: border-box;
+}
+
+.container-main-title {
+	/*width: max-content;*/
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	justify-content: space-between;
+	margin-bottom: 8px;
+}
+
+.container-title {
+	width: max-content;
+}
+
+.container-btn {
+	width: auto;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.btn {
+	background: none;
+	border: none;
+	font-size: 12px;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.btn-raz {
+	margin-right: 4px;
+	margin-left: 4px;
+}
+
+.btn:hover {
+	cursor: pointer;
+	text-decoration: underline;
+	color: #c69e6b;
+}
+
+.container-custom-style {
+	display: flex;
+	border: 1px solid #e9dabb;
+	padding: 8px 12px 2px 12px;
+	background-color: #faf5ea;
+	flex-direction: row-reverse;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	margin-bottom: 8px;
+}
+
+label {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/*label[for="removeBtnEndOfFic"],
+[for="sidebarNavStyle"],
+[for="removeReaded"]{
+	align-items: flex-start;
+}*/
+
+label {
+	align-items: flex-start;
+}
+
+.container-checkbox {
+	margin-bottom: 6px;
+}
+
+.container-switch {
+	font-size: 12px;
+}
+
+.container-checkbox label input {
+	margin-right: 4px;
+	block-size: 12px
+}

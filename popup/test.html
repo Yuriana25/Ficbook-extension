@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Вкладки в Popup</title>
+	<link rel="stylesheet" href="popup.css">
+	<style>
+		body {
+			font-size: 14px;
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 10px;
+		}
+
+		/* Стили для вкладок */
+		.tabs-buttons {
+			display: flex;
+			border-bottom: 1px solid #ccc;
+			margin-bottom: 8px;
+		}
+
+		.tab-btn {
+			padding: 5px 10px;
+			border: none;
+			background: none;
+			cursor: pointer;
+			font-size: 14px;
+		}
+
+		.tab-btn.active {
+			border-bottom: 2px solid #000;
+			font-weight: bold;
+		}
+
+		.tab-content {
+			/* По умолчанию все вкладки скрыты, кроме активной */
+		}
+	</style>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			// Переключение вкладок
+			const tabButtons = document.querySelectorAll('.tab-btn');
+			const tabContents = document.querySelectorAll('.tab-content');
+
+			tabButtons.forEach(button => {
+				button.addEventListener('click', () => {
+					// Скрываем все вкладки
+					tabContents.forEach(content => content.style.display = 'none');
+					// Убираем класс active у всех кнопок
+					tabButtons.forEach(btn => btn.classList.remove('active'));
+					// Показываем выбранную вкладку
+					const targetId = button.getAttribute('data-target');
+					document.getElementById(targetId).style.display = 'block';
+					// Помечаем кнопку как активную
+					button.classList.add('active');
+				});
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="tabs-container">
+		<div class="tabs-buttons">
+			<button class="tab-btn active" data-target="tab-styles">Стили</button>
+			<button class="tab-btn" data-target="tab-options">Опции</button>
+		</div>
+		<div class="tabs-content">
+			<div class="tab-content" id="tab-styles">
+				<!-- Контент вкладки "Стили": например, чекбоксы для выбора стилей -->
+				<div class="container-custom-style">
+					<div class="container-checkbox">
+						<label for="bookCoverStyle">
+							<input type="checkbox" id="bookCoverStyle" name="bookCoverStyle" />
+							Добавить книжную обложку (old)
+						</label><br />
+					</div>
+					<div class="container-checkbox">
+						<label for="discountSmaller">
+							<input type="checkbox" id="discountSmaller" name="discountSmaller" />
+							Кнопка со скидкой меньше (old)
+						</label><br />
+					</div>
+					<div class="container-checkbox">
+						<label for="searchFullScreenStyle">
+							<input type="checkbox" id="searchFullScreenStyle" name="searchFullScreenStyle" />
+							Расширенный поиск на всю страницу (old)
+						</label><br />
+					</div>
+					<div class="container-checkbox">
+						<label for="removeBtnEndOfFic">
+							<input type="checkbox" id="removeBtnEndOfFic" name="removeBtnEndOfFic" />
+							Убрать кнопку "Вперед" (old)
+						</label><br />
+					</div>
+					<div class="container-checkbox">
+						<label for="commentsStyle">
+							<input type="checkbox" id="commentsStyle" name="commentsStyle" />
+							Стили для комментариев (под меня)
+						</label><br />
+					</div>
+				</div>
+			</div>
+			<div class="tab-content" id="tab-options" style="display: none;">
+				<!-- Контент вкладки "Опции": например, переключатель, кнопки "Выбрать всё" и "Сбросить" -->
+				<div class="container-switch">
+					<label for="switch" class="gui-switch">
+						On
+						<input type="checkbox" role="switch" id="switch">
+					</label>
+				</div>
+				<div class="container-btn">
+					<button class="btn" type="button" id="checkAll">Выбрать всё</button>
+					<span class="btn-raz">⋮</span>
+					<button class="btn" type="button" id="reset">Сбросить</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="popup.js" defer></script>
+</body>
+
+</html>

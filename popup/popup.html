@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Ficbook Old Style</title>
+	<style></style>
+	<link rel="stylesheet" href="popup.css">
+	<link rel="stylesheet" href="switch.css">
+</head>
+
+<body>
+	<div class="main">
+
+		<div class="container-main-title">
+			<div class="container-title">
+				<h3>Дизайн Фикбука</h3>
+			</div>
+			<div class="container-switch">
+				<label for="switch" class="gui-switch">
+					On
+					<input type="checkbox" role="switch" id="switch">
+				</label>
+			</div>
+		</div>
+
+
+		<div class="container-custom-style">
+			<div class="container-checkbox">
+				<label for="bookCoverStyle">
+					<input type="checkbox" id="bookCoverStyle" name="bookCoverStyle" />
+					Добавить книжную обложку (old)
+				</label><br />
+			</div>
+
+			<div class="container-checkbox">
+				<label for="discountSmaller">
+					<input type="checkbox" id="discountSmaller" name="discountSmaller" />
+					Кпонка со скидкой меньше (old)
+				</label><br />
+			</div>
+
+			<div class="container-checkbox">
+				<label for="searchFullScreenStyle">
+					<input type="checkbox" id="searchFullScreenStyle" name="searchFullScreenStyle" />
+					Расширеный поиск на всю страницу (old)
+				</label><br />
+			</div>
+			
+			<div class="container-checkbox">
+				<label for="removeBtnEndOfFic">
+					<input type="checkbox" id="removeBtnEndOfFic" name="removeBtnEndOfFic" />
+					Убрать кнопку "Вперед" в конце последней части (old)
+				</label><br />
+			</div>
+
+			<div class="container-checkbox">
+				<label for="commentsStyle">
+					<input type="checkbox" id="commentsStyle" name="commentsStyle" />
+					Стили для коментариев (под меня)
+				</label><br />
+			</div>
+
+			<div class="container-checkbox">
+				<label for="sidebarNavStyle">
+					<input type="checkbox" id="sidebarNavStyle" name="sidebarNavStyle" />
+					Профиль: больше шрифт и иконки в боковом меню, колокольчик
+				</label><br />
+			</div>
+
+			<div class="container-checkbox">
+				<label for="headersPageStyle">
+					<input type="checkbox" id="headersPageStyle" name="headersPageStyle" />
+					Заголовки страниц больше (old)
+				</label><br />
+			</div>
+
+			<div class="container-checkbox">
+				<label for="removePromo">
+					<input type="checkbox" id="removePromo" name="removePromo" />
+					Убрать промо со списков (old)
+				</label><br />
+			</div>
+
+			<div class="container-checkbox">
+				<label for="removeReaded">
+					<input type="checkbox" id="removeReaded" name="removeReaded" />
+					Скрыть прочитанные фанфики с популярного
+				</label><br />
+			</div>
+
+			<div class="container-checkbox">
+				<label for="addUnderlineFicTitles">
+					<input type="checkbox" id="addUnderlineFicTitles" name="addUnderlineFicTitles" />
+					Добавить подчеркивание для названий фанфиков (ссылки)
+				</label><br />
+			</div>
+		</div>
+		
+
+		<div class="container-btn">
+			<button class="btn" type="button" id="checkAll">Выбрать всё</button>
+			<span class="btn-raz">⋮</span>
+			<button class="btn" type="button" id="reset">Сбросить</button>
+		</div>
+	</div>
+	<script src="popup.js" defer></script>
+</body>
+
+</html>
