@@ -774,10 +774,15 @@ function generateChangeColorFontCss() {
 		}
 
 		/*Коричневый цвет кнопок/текста - темнее #4f2d01 var(--primary-8)*/
-		a,
+		a:not(.notification, .btn-on-book-background),
 		.as-link,
 		.search-form .link-button {
 			color: var(--primary-8);
+		}
+
+		/* Цвет оповещения черный var(--base-10) #000*/
+		.notification .notification-info[data-v-69e28e15] {
+			color: var(--base-10) !important;
 		}
   `;
 }

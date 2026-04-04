@@ -1,15 +1,20 @@
- /*Цвета текста на сайте*/
- /* Темный основной текст */
- .book-container .book-inner {
- 	color: #000 !important;
- }
+/*Цвета текста на сайте*/
+/* Темный основной текст */
+.book-container .book-inner {
+	color: #000 !important;
+}
 
- /*Коричневый цвет кнопок/текста - темнее #4f2d01 var(--primary-8)*/
- a,
- .as-link,
- .search-form .link-button {
- 	color: var(--primary-8);
- }
+/*Коричневый цвет кнопок/текста - темнее #4f2d01 var(--primary-8)*/
+a:not(.notification, .btn-on-book-background),
+.as-link,
+.search-form .link-button {
+	color: var(--primary-8);
+}
+
+/* Цвет оповещения черный */
+.notification .notification-info[data-v-69e28e15] {
+	color: var(--base-10) !important;
+}
 
 
 /* Коментарии */
