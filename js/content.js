@@ -770,7 +770,7 @@ function generateChangeColorFontCss() {
 		/*Цвета текста на сайте*/
 		/* Темный основной текст */
 		.book-container .book-inner {
-			color: #000 !important;
+			color: var(--base-10) !important;
 		}
 
 		/*Коричневый цвет кнопок/текста - темнее #4f2d01 var(--primary-8)*/
