@@ -774,7 +774,7 @@ function generateChangeColorFontCss() {
 		}
 
 		/*Коричневый цвет кнопок/текста - темнее #4f2d01 var(--primary-8)*/
-		a:not(.notification, .btn-on-book-background),
+		a:not(.notification, .btn-on-book-background, .btn):not(:where(footer a)),
 		.as-link,
 		.search-form .link-button {
 			color: var(--primary-8);
