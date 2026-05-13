@@ -683,7 +683,7 @@ function preloadAndCacheRemovePromoStyle() {
 function generateRemovePromoCss() {
 	return `
 		/* Убрать промо со списков */
-		.fanfic-promo-carousel {
+		.fanfic-promo-carousel, .fanfic-text-promo {
 			display: none
 		}
   `;

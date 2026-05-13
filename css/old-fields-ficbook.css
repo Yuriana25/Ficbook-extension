@@ -41,7 +41,7 @@ a:not(.notification, .btn-on-book-background, .btn,
 }
 
 /* Убрать промо со списков */
-.main-holder.alt .top-list .top-item-row:has(.fanfic-block-read) {
+.fanfic-promo-carousel, .fanfic-text-promo {
 	display: none;
 }
 
