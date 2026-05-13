@@ -600,14 +600,21 @@ function preloadAndCacheSidebarNavStyle() {
 
 function generateSidebarNavCss() {
 	return `
-    /* Больше шрифт/иконки в меню профиля. колокольчик */
+    /* Больше шрифт/иконки в меню профиля. колокольчик/новости */
 		.sidebar-nav * {
 			font-size: 16px;
 			line-height: 26px;
 		}
 
-		.icon-bell {
+		.ic_bell,
+		.btn-top-bar .ic_newspaper {
 			font-size: 22px;
+		}
+
+		/* Размер цифры количества уведомлений 9,8px или .7em*/
+		.btn-top-bar .badge-holder {
+			font-size: 9.8px;
+			right: 9px;
 		}
   `;
 }
