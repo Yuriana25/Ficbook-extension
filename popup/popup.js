@@ -11,6 +11,7 @@ const keys = [
 	'removeReaded',
 	'addUnderlineFicTitles',
 	'changeColorFont',
+	'backColorIndication',
 	'switch'
 ];
 
