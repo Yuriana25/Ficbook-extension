@@ -906,7 +906,7 @@ function generateBackColorIndicationCss() {
 			mask: url(" data:image/svg+xml,\ <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>\ <path d='M16 8c0-.4-.4-.8-.8-.8h-2L15 5.4a.8.8 0 0 0-1.2-1.2l-3 3h-2v-2l3-3A.8.8 0 0 0 10.6 1L8.8 2.8v-2C8.8.4 8.5 0 8 0s-.8.4-.8.8v2L5.4 1a.8.8 0 0 0-1.2 1.2l3 3v2h-2l-3-3A.8.8 0 0 0 1 5.4l1.8 1.8h-2a.8.8 0 1 0 0 1.6h2L1 10.6a.8.8 0 0 0 1.2 1.2l3-3h2v2l-3 3A.8.8 0 0 0 5.4 15l1.8-1.8v2a.8.8 0 0 0 1.6 0v-2l1.8 1.8a.8.8 0 0 0 1.2-1.2l-3-3v-2h2l3 3a.8.8 0 0 0 1.2-1.2l-1.8-1.8h2c.4 0 .8-.4.8-.8z'/>\ </svg>");
 		}
 
-		.ds-label-regular:has(.js-marks-plus, .js-like-count) {
+		.ds-label-regular:has(.js-marks-plus, .js-like-count, .ic_thumbs-up) {
 			--background-color: var(--status-like-finished-bg);
 			--color: var(--status-like-finished);
 		}

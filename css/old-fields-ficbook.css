@@ -111,7 +111,7 @@ a:not(.notification, .btn-on-book-background, .btn,
 }
 
 .ds-label-regular:has(.js-marks-plus,
-.js-like-count) {
+.js-like-count, .ic_thumbs-up) {
 	--background-color: var(--status-like-finished-bg);
 	--color: var(--status-like-finished);
 }
