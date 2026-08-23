@@ -795,7 +795,7 @@ function generateChangeColorFontCss() {
 		.as-link,
 		.search-form .link-button,
 		.ds-btn:not(.notification, .btn-on-book-background, .btn,
-		.btn-top-bar, .ds-btn-primary):not(:where(footer a)) {
+		.btn-top-bar, .ds-btn-primary, .ic_flag, .ds-btn-success):not(:where(footer a)){
 			color: var(--primary-8);
 		}
 
