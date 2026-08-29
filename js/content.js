@@ -62,6 +62,11 @@ const MODULES = {
 		toggle: 'backColorIndication',
 		cache: 'cachedStyles_backColorIndication',
 		update: updateBackColorIndicationModule
+	},
+	makeButtonsBigger: {
+		toggle: 'makeButtonsBigger',
+		cache: 'cachedStyles_makeButtonsBigger',
+		update: updateMakeButtonsBiggerModule
 	}
 };
 
@@ -119,7 +124,7 @@ function updateAllModule(data) {
 		applyCombinedStylesFromMemory();
 	} else {
 		removeStyles();
-		console.log('Расширение отключено (switch выключён)');
+		console.log('Расширение отключено (switch выключен)');
 	}
 }
 
@@ -529,7 +534,7 @@ function preloadAndCacheCommentsStyle() {
 
 function generateCommentsCss() {
 	return `
-		/* Коментарии */
+		/* Комментарии */
 		.comment-container * {
 			font-size: 15px !important;
 		}
@@ -915,6 +920,62 @@ function generateBackColorIndicationCss() {
 		.ds-label-regular:has(.ic_trophy) {
 			--color: #d49600;
 			--background-color: #eddca6;
+		}
+  `;
+}
+
+// ------------- МОДУЛЬ "Make Buttons Bigger" ------------- MakeButtonsBigger makeButtonsBigger
+
+function updateMakeButtonsBiggerModule(data) {
+	if (data.makeButtonsBigger) {
+		if (data.cachedStyles_makeButtonsBigger) {
+			window.moduleStyles.makeButtonsBigger = data.cachedStyles_makeButtonsBigger;
+		} else {
+			preloadAndCacheMakeButtonsBiggerStyle();
+		}
+	} else {
+		window.moduleStyles.makeButtonsBigger = '';
+	}
+}
+
+function preloadAndCacheMakeButtonsBiggerStyle() {
+	const generatedCss = generateMakeButtonsBiggerCss();
+	chrome.storage.local.set({ cachedStyles_makeButtonsBigger: generatedCss }, () => {
+		window.moduleStyles.makeButtonsBigger = generatedCss;
+		applyCombinedStylesFromMemory();
+		console.log("✅ cachedStyles_makeButtonsBigger сохранён и применён");
+	});
+}
+
+function generateMakeButtonsBiggerCss() {
+	return `
+		/*Кнопки в конце работы */
+		.ds-btn-mini {
+			min-height: 40px;
+		}
+
+		.ds-btn-mini svg {
+			font-size: var(--t2-font-size);
+		}
+
+		.ds-btn-success-filled {
+			--color: var(--ni-white);
+			--color-hover: var(--ni-white);
+			--background-color: var(--ni-green);
+			--background-hover-color: var(--success-5);	/*#449d44*/
+			--border-color: transparent;
+			--border-color-hover: transparent;
+			--font-weight: bold;
+		}
+
+		.ds-btn-success {
+			--color: var(--ni-white);
+			--color-hover: var(--ni-white);
+			--background-color: var(--ni-green);
+			--background-hover-color: var(--success-5);	/*#449d44*/
+			--border-color: transparent;
+			--border-color-hover: transparent;
+			--font-weight: bold;
 		}
   `;
 }

@@ -12,6 +12,7 @@ const keys = [
 	'addUnderlineFicTitles',
 	'changeColorFont',
 	'backColorIndication',
+	'makeButtonsBigger',
 	'switch'
 ];
 

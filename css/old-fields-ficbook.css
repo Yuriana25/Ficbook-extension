@@ -21,7 +21,7 @@ a:not(.ds-btn-critic, .notification, .btn-on-book-background, .btn,
 }
 
 
-/* Коментарии */
+/* Комментарии */
 .comment-container * {
 	font-size: 15px !important;
 }
@@ -139,9 +139,38 @@ a:not(.ds-btn-critic, .notification, .btn-on-book-background, .btn,
 	text-decoration: underline !important;
 }
 
-/* Скрыть прочитаное с популярного */
+/* Скрыть прочитанное с популярного */
 .top-item-row:has(.fanfic-block-read) {
 	display: none;
+}
+
+/*Кнопки в конце работы */
+.ds-btn-mini {
+	min-height: 40px;
+}
+
+.ds-btn-mini svg {
+	font-size: var(--t2-font-size);
+}
+
+.ds-btn-success-filled {
+	--color: var(--ni-white);
+	--color-hover: var(--ni-white);
+	--background-color: var(--ni-green);
+	--background-hover-color: var(--success-5);	/*#449d44*/
+	--border-color: transparent;
+	--border-color-hover: transparent;
+	--font-weight: bold;
+}
+
+.ds-btn-success {
+	--color: var(--ni-white);
+	--color-hover: var(--ni-white);
+	--background-color: var(--ni-green);
+	--background-hover-color: var(--success-5);	/*#449d44*/
+	--border-color: transparent;
+	--border-color-hover: transparent;
+	--font-weight: bold;
 }
 
 /* Больше шрифт/иконки в меню профиля и списке профиля. колокольчик/новости */
