@@ -958,17 +958,7 @@ function generateMakeButtonsBiggerCss() {
 			font-size: var(--t2-font-size);
 		}
 
-		.ds-btn-success-filled {
-			--color: var(--ni-white);
-			--color-hover: var(--ni-white);
-			--background-color: var(--ni-green);
-			--background-hover-color: var(--success-5);	/*#449d44*/
-			--border-color: transparent;
-			--border-color-hover: transparent;
-			--font-weight: bold;
-		}
-
-		.ds-btn-success {
+		.ds-btn-success-filled, .ds-btn-success {
 			--color: var(--ni-white);
 			--color-hover: var(--ni-white);
 			--background-color: var(--ni-green);
