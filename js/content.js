@@ -790,12 +790,13 @@ function generateChangeColorFontCss() {
 		}
 
 		/*Коричневый цвет кнопок/текста - темнее #4f2d01 var(--primary-8)*/
-		a:not(.notification, .btn-on-book-background, .btn,
+		a:not(.ds-btn-critic, .notification, .btn-on-book-background, .btn,
 		.btn-top-bar, .ds-btn-primary):not(:where(footer a)),
 		.as-link,
 		.search-form .link-button,
 		.ds-btn:not(.notification, .btn-on-book-background, .btn,
-		.btn-top-bar, .ds-btn-primary, .ic_flag, .ds-btn-success):not(:where(footer a)){
+		.btn-top-bar, .ds-btn-primary, .ds-btn-critic, .ds-btn-success):not(:where(footer a)),
+		.list-of-fanfic-parts{
 			color: var(--primary-8);
 		}
 
