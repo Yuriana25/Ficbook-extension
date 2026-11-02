@@ -621,7 +621,8 @@ function generateSidebarNavCss() {
 			font-size: 22px;
 		}
 
-		.profile-area ul li a {
+		.user-menu-panel ul li .menu-item 
+{
 			font-size: 16px;
 		}
 
