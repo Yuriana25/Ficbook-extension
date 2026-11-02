@@ -626,7 +626,7 @@ function generateSidebarNavCss() {
 		}
 
 				/* Размер цифры количества уведомлений 9,8px или .7em*/
-		.btn-top-bar .badge-holder {
+		.btn-top-bar .top-bar-badge {
 			font-size: 9.8px;
 			right: 9px;
 		}
@@ -801,12 +801,14 @@ function generateChangeColorFontCss() {
 		.search-form .link-button,
 		.ds-btn:not(.notification, .btn-on-book-background, .btn,
 		.btn-top-bar, .ds-btn-primary, .ds-btn-critic, .ds-btn-success):not(:where(footer a)),
-		.list-of-fanfic-parts{
+		.list-of-fanfic-parts,
+		.user-menu-panel .menu-items .menu-item,
+		.header-nav .header-nav-item {
 			color: var(--primary-8);
 		}
 
 		/* Цвет оповещения черный var(--base-10) #000*/
-		.notification .notification-info[data-v-69e28e15] {
+		.notification .notification-info {
 			color: var(--base-10) !important;
 		}
   `;

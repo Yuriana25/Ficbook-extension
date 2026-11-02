@@ -11,12 +11,14 @@ a:not(.ds-btn-critic, .notification, .btn-on-book-background, .btn,
 .search-form .link-button,
 .ds-btn:not(.notification, .btn-on-book-background, .btn,
 	.btn-top-bar, .ds-btn-primary, .ds-btn-critic, .ds-btn-success):not(:where(footer a)),
-.list-of-fanfic-parts {
-	color: var(--primary-8);
+.list-of-fanfic-parts,
+.user-menu-panel .menu-items .menu-item,
+.header-nav .header-nav-item {
+	color: var(--primary-8) !important;
 }
 
 /* Цвет оповещения черный var(--base-10) #000*/
-.notification .notification-info[data-v-69e28e15] {
+.notification .notification-info {
 	color: var(--base-10) !important;
 }
 
@@ -74,7 +76,7 @@ a:not(.ds-btn-critic, .notification, .btn-on-book-background, .btn,
 	--color: var(--status-in-progress);
 }
 
-.ds-label-status-in-progress:not(:has(svg))::before{
+.ds-label-status-in-progress:not(:has(svg))::before {
 	content: "";
 	display: inline-block;
 	width: 16px;
@@ -112,7 +114,7 @@ a:not(.ds-btn-critic, .notification, .btn-on-book-background, .btn,
 }
 
 .ds-label-regular:has(.js-marks-plus,
-.js-like-count, .ic_thumbs-up) {
+	.js-like-count, .ic_thumbs-up) {
 	--background-color: var(--status-like-finished-bg);
 	--color: var(--status-like-finished);
 }
@@ -123,14 +125,16 @@ a:not(.ds-btn-critic, .notification, .btn-on-book-background, .btn,
 }
 
 /* Заголовки - больше */
-.heading, h1 {
+.heading,
+h1 {
 	font-weight: 400;
 	font-size: 36px;
 	line-height: 48px;
 }
 
 /* Убрать промо со списков */
-.fanfic-promo-carousel, .fanfic-text-promo {
+.fanfic-promo-carousel,
+.fanfic-text-promo {
 	display: none;
 }
 
@@ -153,11 +157,13 @@ a:not(.ds-btn-critic, .notification, .btn-on-book-background, .btn,
 	font-size: var(--t2-font-size);
 }
 
-.ds-btn-success-filled, .ds-btn-success {
+.ds-btn-success-filled,
+.ds-btn-success {
 	--color: var(--ni-white);
 	--color-hover: var(--ni-white);
 	--background-color: var(--ni-green);
-	--background-hover-color: var(--success-5);	/*#449d44*/
+	--background-hover-color: var(--success-5);
+	/*#449d44*/
 	--border-color: transparent;
 	--border-color-hover: transparent;
 	--font-weight: bold;
@@ -178,8 +184,8 @@ a:not(.ds-btn-critic, .notification, .btn-on-book-background, .btn,
 	font-size: 16px;
 }
 
-		/* Размер цифры количества уведомлений 9,8px или .7em*/
-.btn-top-bar .badge-holder {
+/* Размер цифры количества уведомлений 9,8px или .7em*/
+.btn-top-bar .top-bar-badge {
 	font-size: 9.8px;
 	right: 9px;
 }
